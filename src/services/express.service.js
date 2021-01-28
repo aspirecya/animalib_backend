@@ -12,9 +12,6 @@ app.use(bodyParser.json());
 // routes
 app.use('/api/v1', apiRouter);
 
-app.headers({
-    "Access-Control-Allow-Origin": "*"
-});
 
 exports.start = () => {
     let port = config.port;
