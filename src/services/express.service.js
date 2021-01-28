@@ -7,14 +7,14 @@ const apiRouter = require('../routes');
 // start express
 const app = express();
 
+// cors
+app.use(cors());
+
 // middleware init
 app.use(bodyParser.json());
 
 // routes
 app.use('/api/v1', apiRouter);
-
-// cors
-app.use(cors());
 
 exports.start = () => {
     let port = config.port;
