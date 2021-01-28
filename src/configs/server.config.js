@@ -1,4 +1,6 @@
+require('dotenv').config();
+
 module.exports = {
-    port: "3000",
+    port: process.env.PORT,
     name: "[RELEASE 0.1] animalib back-end"
 }
