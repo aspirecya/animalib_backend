@@ -11,7 +11,6 @@ exports.register = (req, res, err) => {
         password: hashedPassword,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
-        animal: [],
         admin: false,
     });
 
@@ -73,7 +72,7 @@ exports.login = (req, res) => {
             res.send({
                 auth: true,
                 token: userToken,
-                body: {
+                user: {
                     _id: user._id,
                     email: user.email,
                     firstname: user.firstname,
