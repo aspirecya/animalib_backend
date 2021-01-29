@@ -54,14 +54,9 @@ exports.getUserById = (req, res) => {
 exports.login = (req, res, err) => {
     User.findOne({ email: req.body.email })
         .then(user => {
-            if (!user) {
-                return res.status(401).json({
-                    message: "User not found."
-                });
-            }
-            if (!bcrypt.compareSync(req.body.password, user.password)){
-                return res.status(401).json({
-                    message: "The password you entered is incorrect."
+            if (!user || !bcrypt.compareSync(req.body.password, user.password)) {
+                return res.status(401).send({
+                    error: "The information entered are incorrect."
                 });
             }
             let userToken = jwt.sign(
