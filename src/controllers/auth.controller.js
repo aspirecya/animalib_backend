@@ -52,8 +52,13 @@ exports.getUserById = (req, res) => {
 };
 
 exports.login = (req, res, err) => {
-    User.findOne({ email: req.body.email })
+    User.findOne({ email: req.body.email }, (err))
         .then(user => {
+            if(!user) {
+                return res.status(404).send({
+                    message: "User not found."
+                });
+            }
             if (!bcrypt.compareSync(req.body.password, user.password)){
                 return res.status(401).send({
                     message: "The password you entered is incorrect."
