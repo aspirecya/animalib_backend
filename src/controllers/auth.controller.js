@@ -76,7 +76,8 @@ exports.login = (req, res) => {
                     _id: user._id,
                     email: user.email,
                     firstname: user.firstname,
-                    lastname: user.lastname
+                    lastname: user.lastname,
+                    token: userToken
                 }
             });
         }).catch(err => {
