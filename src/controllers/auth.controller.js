@@ -52,7 +52,7 @@ exports.getUserById = (req, res) => {
 };
 
 exports.login = (req, res, err) => {
-    User.findOne({ email: req.body.email }, (err))
+    User.findOne({ email: req.body.email })
         .then(user => {
             if (!bcrypt.compareSync(req.body.password, user.password)){
                 return res.status(401).send({
