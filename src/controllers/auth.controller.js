@@ -51,13 +51,13 @@ exports.getUserById = (req, res) => {
     })
 };
 
-exports.login = (req, res) => {
+exports.login = (req, res, err) => {
     User.findOne({ email: req.body.email })
         .then(user => {
             if (!bcrypt.compareSync(req.body.password, user.password)){
-                return res.status(404).send({
+                return res.status(401).send({
                     message: "The password you entered is incorrect."
-                })
+                });
             }
             let userToken = jwt.sign(
                 {
@@ -71,7 +71,6 @@ exports.login = (req, res) => {
             )
             res.send({
                 auth: true,
-                token: userToken,
                 user: {
                     _id: user._id,
                     email: user.email,
@@ -80,9 +79,10 @@ exports.login = (req, res) => {
                     token: userToken
                 }
             });
-        }).catch(err => {
-        return res.status(500).send({
-            message: err || "An error occurred when logging in."
-        });
+        })
+        .catch(err => {
+            return res.status(500).send({
+                message: err || "An error occurred when logging in."
+            });
     });
 };
