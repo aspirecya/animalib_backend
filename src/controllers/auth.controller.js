@@ -73,7 +73,12 @@ exports.login = (req, res) => {
             res.send({
                 auth: true,
                 token: userToken,
-                body: user
+                body: {
+                    _id: user._id,
+                    email: user.email,
+                    firstname: user.firstname,
+                    lastname: user.lastname
+                }
             });
         }).catch(err => {
         return res.status(500).send({
