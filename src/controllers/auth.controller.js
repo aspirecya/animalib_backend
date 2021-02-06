@@ -29,8 +29,13 @@ exports.register = (req, res, err) => {
             );
             res.send({
                 auth: true,
-                token: userToken,
-                body: data,
+                user: {
+                    _id: user._id,
+                    email: user.email,
+                    firstname: user.firstname,
+                    lastname: user.lastname,
+                    token: userToken
+                }
             });
         })
         .catch(err => {
