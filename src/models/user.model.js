@@ -20,9 +20,6 @@ const userSchema = new Schema({
         lastname: {
             type: String
         },
-        animal: {
-            type: Array,
-        },
         admin: {
             type: Boolean
         },

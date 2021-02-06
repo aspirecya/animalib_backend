@@ -50,7 +50,7 @@ exports.findById = (req, res) => {
 };
 
 exports.findByIdAndUpdate = (req, res) => {
-    if(req.body.password = bcrypt.hashSync(req.body.password, 8));
+    if(req.body.password) req.body.password = bcrypt.hashSync(req.body.password, 8);
 
     User.findByIdAndUpdate(req.params.id, req.body)
     .then(user => {
