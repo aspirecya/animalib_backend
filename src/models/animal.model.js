@@ -21,27 +21,21 @@ const animalSchema = new Schema({
         },
         weight: {
             type: Number,
-            required: true,
         },
         race: {
             type: String,
-            required: true,
         },
         dob: {
             type: String,
-            required: true,
         },
         color: {
             type: String,
-            required: true,
         },
         sterile: {
             type: Boolean,
-            required: true,
         },
         puce_id: {
             type: String,
-            required: true,
         },
     },
 
