@@ -63,8 +63,8 @@ exports.findByOwnerId = (req, res) => {
 
 exports.findByIdAndUpdate = (req, res) => {
     Animal.findByIdAndUpdate(req.params.id, req.body)
-        .then(doctor => {
-            res.send(doctor)
+        .then(animal => {
+            res.send(animal)
         })
         .catch(err => {
             res.status(500).send({
