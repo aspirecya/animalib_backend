@@ -9,6 +9,7 @@ exports.create = (req, res, err) => {
         race: req.body.race,
         dob: req.body.dob,
         color: req.body.color,
+        weight: req.body.weight,
         sterile: req.body.sterile,
         puce_id: req.body.puce_id
     });
